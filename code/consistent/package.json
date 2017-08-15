@@ -1,0 +1,15 @@
+{
+  "name": "consistent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "trial-cpu.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^3.14.2",
+    "shelljs": "^0.7.8"
+  }
+}

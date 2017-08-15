@@ -1,0 +1,10 @@
+const shelljs = require('shelljs');
+let a = shelljs.exec('node ./cpu-loader.js',{silent:true,async:true});
+let b = shelljs.exec('./bin/wu run wasm-memory -v',{silent:false});
+let c = shelljs.exec('node ./cpu-loader.js',{silent:true,async:true});
+let d = shelljs.exec('./bin/wu run wasm-memory -v',{silent:false});
+let e = shelljs.exec('node ./cpu-loader.js',{silent:true,async:true});
+let f = shelljs.exec('./bin/wu run wasm-memory -v',{silent:false});
+a.kill();
+c.kill();
+e.kill();
