@@ -18,13 +18,13 @@ from os.path import isfile, join
 # PARAMETERS
 #==============================================================================
 NORMALIZED = False
-DATA_FOLDER = "../data/aug2/cpu-times/"
-RESULTS_FOLDER="./../results/aug2/"
-PLOT_HISTOGRAM = False
+DATA_FOLDER = "../data/aug31/cpu-times/"
+RESULTS_FOLDER="./../results/aug31/"
+PLOT_HISTOGRAM = True
 PLOT_SCATTER = False
-BUILD_TABLE = True
-CUTOFF = 50
-GROUPS_PER_BENCH = 4
+BUILD_TABLE = False
+CUTOFF = 4
+GROUPS_PER_BENCH = 1
 
 #Definiting linear function
 def linear(x, a, b):

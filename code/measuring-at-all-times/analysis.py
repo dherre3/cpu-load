@@ -20,11 +20,11 @@ import sys
 #==============================================================================
 DATA_FOLDER = "../../data/aug2/"
 RESULTS_FOLDER="./../../results/aug2"
-PLOT_ITER_CPU = False
+PLOT_ITER_CPU = True
 DELETE_OUTLIERS = False
 PRODUCE_TIMES_CPU_CSV = False
-GET_MEAN_BENCHMARK_LOAD = True
-
+PRODUCE_TIMES_CPU_NEW_PROCEDURE = False
+GET_MEAN_BENCHMARK_LOAD = False
 def getNumberArray(arr):
     '''
         Formats CSV file to appropiately get array of numbers
@@ -110,9 +110,10 @@ if __name__ == "__main__":
             plt.figure()
             for i in range(len(dt_cpu)/3):
                 i*=3
-                plt.plot(np.arange(0,len(dt_cpu["names"][i])),dt_cpu["names"][i],"-b");
-                plt.plot(np.arange(len(dt_cpu["names"][i]),len(dt_cpu["names"][i])+len(dt_cpu["names"][i+1])),dt_cpu["names"][i+1],"-g");
-                plt.plot(np.arange(len(dt_cpu["names"][i])+len(dt_cpu["names"][i+1]),len(dt_cpu["names"][i])+len(dt_cpu["names"][i+1])+len(dt_cpu["names"][i+2])),dt_cpu["names"][i+2],"-r");
+                if meanIter(dt_cpu["names"][i],dt_cpu["names"][i+2]) < 100:
+                    plt.plot(np.arange(0,len(dt_cpu["names"][i])),dt_cpu["names"][i],"-b");
+                    plt.plot(np.arange(len(dt_cpu["names"][i]),len(dt_cpu["names"][i])+len(dt_cpu["names"][i+1])),dt_cpu["names"][i+1],"-g");
+                    plt.plot(np.arange(len(dt_cpu["names"][i])+len(dt_cpu["names"][i+1]),len(dt_cpu["names"][i])+len(dt_cpu["names"][i+1])+len(dt_cpu["names"][i+2])),dt_cpu["names"][i+2],"-r");
             plt.title(name)
             plt.xlabel("Time CPU-Collector(s)")
             plt.ylabel("CPU Load %")
@@ -125,7 +126,7 @@ if __name__ == "__main__":
                         i*=3
                         iterMean = meanIter(dt_cpu["names"][i],dt_cpu["names"][i+2])
                         time = dt_times["times"][i/3]
-                        f.write(str(float(time[:len(time)-1]))+","+str(iterMean)+ "\n")
+                        f.write(str(float(time[:len(time)-1]))+","+str(iterMean)+ "\n")            
         if GET_MEAN_BENCHMARK_LOAD:
             cpu_avg_bench = []
             for i in range(len(dt_cpu)/3):
